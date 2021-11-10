@@ -21,6 +21,6 @@ urlpatterns = [
 
     path('',createArticle),
     path('home/',home),
-    path('home/<int:id>/',detailed_view ),
+    path('home/<slug:slug>/',detailed_view ),
     path('admin/', admin.site.urls),
 ]

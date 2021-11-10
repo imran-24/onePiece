@@ -3,7 +3,7 @@
 {% block content %}
 
 {% for x in obj %}
-    <li><a href ='/home/{{ x.id }}/' >{{ x.title }}</a></li>
+    <li><a href ='/home/{{ x.slug }}/' >{{ x.title }}</a></li>
     
 {% endfor %}
 {% endblock %}

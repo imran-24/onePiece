@@ -1,5 +1,6 @@
+from django.http.response import Http404
 from django.shortcuts import render
-
+from django.http import Http404
 from .models import Article
 
 # Create your views here.
@@ -22,10 +23,13 @@ def home(request):
     context = {"obj" : object }
     return render(request,'home.html',context= context)
 
-def detailed_view(request,id= None):
+def detailed_view(request,slug= None):
     context ={}
     if id is not None: 
-        object = Article.objects.get(id = id )
+        try:
+            object = Article.objects.get(slug = slug )
+        except Article.DoesNotExist:
+            raise Http404
         context = {'object' : object}
 
     return render(request,'detailed_view.html',context = context)
