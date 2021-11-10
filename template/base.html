@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+    <form action="/search/" method="GET">
+        {% csrf_token %}
+        <input type="text" placeholder="title or content" name='q'>
+        <input type="submit">
+    </form>
     {% block content %}
     
     {% endblock %}

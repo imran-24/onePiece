@@ -8,6 +8,6 @@
         <button type="submit">create article </button>
     </form> 
 {% else %}
-    <a href='/home/{{ object.id }}/'>{{ object.title }}</a>
+    <a href='{{ object.get_absolute_url }}'>{{ object.title }}</a>
 {% endif %}
 {% endblock %}

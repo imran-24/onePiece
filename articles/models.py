@@ -1,8 +1,10 @@
 from django.db import models
-from django.utils import timezone
+from django.utils import timezone 
+from django.urls import reverse 
 from django.db.models.signals import pre_save, post_save
 # Create your models here.
 from .utils import slugify_instance_title
+
 class Article(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(null=True,blank=True)
@@ -11,7 +13,8 @@ class Article(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-
+    def get_absolute_url(self):
+        return  reverse("detailed_view",kwargs={'slug':self.slug})
 
 def article_pre_save(sender, instance, *args, **kwargs):
     print("pre_save")
